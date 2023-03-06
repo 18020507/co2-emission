@@ -2,8 +2,8 @@
   <div class="filter-form">
     <input type="text" placeholder="What are you looking for?" />
     <div class="list-button-filter">
-      <VSelect :options="fuelOptions"/>
-      <VSelect :options="branchOptions"/>
+      <SelectFuelSource />
+      <SelectBranch />
       <SelectClient />
     </div>
   </div>
@@ -11,24 +11,12 @@
 
 <script>
 import { defineComponent } from "vue";
-import VSelect from "@/components/VSelect.vue";
-import {SelectClient} from "@/views/components/select"
+import {SelectClient, SelectFuelSource, SelectBranch} from "@/views/components/select"
 export default defineComponent({
   components: {
-    VSelect,
     SelectClient,
-  },
-  data() {
-    return {
-      fuelOptions: [
-        { label: "gas", value: "Gas" },
-        { label: "diesel", value: "Diesel" },
-      ],
-      branchOptions: [
-        { label: "009", value: "009" },
-        { label: "008", value: "008" },
-      ],
-    };
+    SelectFuelSource,
+    SelectBranch
   },
 });
 </script>
@@ -38,13 +26,19 @@ export default defineComponent({
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.list-button-filter {
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  flex-direction: row;
   margin-right: 100px;
 }
+
+input {
+  width: 350px;
+  padding: 10px 45px;
+  background: white url("@/assets/search-icon.svg") no-repeat 15px center;
+  background-size: 15px 15px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
 </style>

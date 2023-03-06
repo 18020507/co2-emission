@@ -10,8 +10,8 @@ export default defineComponent({
   data() {
     return {
       options: [
-        { label: "gas", value: "Gas" },
-        { label: "diesel", value: "Diesel" },
+        { label: "Fleet X", value: "fleetx" },
+        { label: "ABC", value: "abc" },
       ],
     };
   },

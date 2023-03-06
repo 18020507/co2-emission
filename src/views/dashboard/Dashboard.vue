@@ -9,34 +9,19 @@
   <div class="dashboard-content">
     <div class="dashboard-chart"></div>
     <div class="dashboard-filter">
-      <ButtonComponent
-        buttonText="SELECT CLIENT"
-        buttonIcon="fa-solid fa-arrow-down"
-      />
-      <ButtonComponent
-        buttonText="SELECT VENDOR"
-        buttonIcon="fa-solid fa-arrow-down"
-      />
-      <ButtonComponent
-        buttonText="SELECT FACILITY"
-        buttonIcon="fa-solid fa-arrow-down"
-      />
-      <ButtonComponent class="button-style"
-        buttonText="SELECT VEHICLE"
-        buttonIcon="fa-solid fa-arrow-down"
-      />
+      <FilterFormDashBoard />
     </div>
   </div>
 </template>
 
 <script>
 import DashboardCardComponent from "../../components/Dashboard-card.vue";
-import ButtonComponent from "../../components/Button.vue";
+import FilterFormDashBoard from "./components/FilterFormDashBoard.vue"
 export default {
   name: "DashboardCardView",
   components: {
     DashboardCardComponent,
-    ButtonComponent,
+    FilterFormDashBoard,
   },
 };
 </script>
@@ -60,10 +45,5 @@ export default {
   margin-left: 30px;
 }
 
-.dashboard-filter {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  height: 300px;
-}
+
 </style>
