@@ -10,7 +10,6 @@
 <script>
 import { defineComponent } from "vue";
 import VSelect from "@/components/VSelect.vue";
-
 export default defineComponent({
   components: VSelect,
   props: {
@@ -20,10 +19,19 @@ export default defineComponent({
     },
     options: {
       type: Array,
-      default: () => []
+      default: () => [],
     }
   },
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.container-wrap {
+  display: flex;
+}
+.name-form-child {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-right: 10px;
+}
+</style>

@@ -10,11 +10,19 @@ import IndustryServiceForm from "./components/IndustryServiceForm.vue";
 
 export default defineComponent({
   components: {
-    IndustryServiceForm,
+    IndustryServiceForm
   },
+  data() {
+    return {
+      sectorOptions: [
+        { label: "Energy", value: "energy" },
+        { label: "Materials", value: "materials" },
+        { label: "Transportation", value: "transportation" },
+      ],
+    };
+  }
 });
 </script>
 
 <style scoped>
-
 </style>
