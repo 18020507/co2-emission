@@ -28,7 +28,7 @@
         />
       </router-link>
 
-      <router-link to="/logisticCorp">
+      <router-link to="/account-setup">
         <ButtonComponent
           buttonText="LogisticCorp"
           buttonIcon="fa-solid fa-user"

@@ -7,7 +7,7 @@
       <FilterFormHeavyTruck />
     </div>
     <div class="page-content">
-      <HeavyTruckTable :tableData="listHeavyTruck"/>
+      <HeavyTruckTable :tableData="listHeavyTruck" />
     </div>
     <div class="footer-page">
       <div class="list-button-function-table">
@@ -32,7 +32,7 @@
 <script>
 import ButtonComponent from "@/components/Button.vue";
 import HeavyTruckTable from "./components/HeavyTruckTable.vue";
-import FilterFormHeavyTruck from "./components/FilterFormHeavyTruck.vue"
+import FilterFormHeavyTruck from "./components/FilterFormHeavyTruck.vue";
 export default {
   components: {
     ButtonComponent,
@@ -41,9 +41,7 @@ export default {
   },
   methods: {
     addNewRow() {
-      this.listHeavyTruck.push({
-        
-      })
+      this.listHeavyTruck.push({});
     },
   },
   data() {
@@ -95,7 +93,7 @@ export default {
           client: "FLEET X",
         },
       ],
-    }
+    };
   },
 };
 </script>
