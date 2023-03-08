@@ -12,15 +12,6 @@ export default defineComponent({
   components: {
     IndustryServiceForm
   },
-  data() {
-    return {
-      sectorOptions: [
-        { label: "Energy", value: "energy" },
-        { label: "Materials", value: "materials" },
-        { label: "Transportation", value: "transportation" },
-      ],
-    };
-  }
 });
 </script>
 

@@ -1,5 +1,7 @@
 <template>
-  <VSelect :options="options" />
+  <div class="container">
+    <VSelect :options="options" />
+    </div>
 </template>
     
 <script>
@@ -17,4 +19,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.container {
+  height: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+</style>
 

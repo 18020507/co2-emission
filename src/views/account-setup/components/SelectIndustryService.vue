@@ -2,7 +2,7 @@
   <div class="container-wrap">
     <div class="name-form-child">{{ nameFormChild }}</div>
     <div class="form-content">
-      <VSelect :options="options"/>
+      <VSelect :options="options" />
     </div>
   </div>
 </template>
@@ -11,7 +11,7 @@
 import { defineComponent } from "vue";
 import VSelect from "@/components/VSelect.vue";
 export default defineComponent({
-  components: VSelect,
+  components: { VSelect },
   props: {
     nameFormChild: {
       type: String,
@@ -20,7 +20,7 @@ export default defineComponent({
     options: {
       type: Array,
       default: () => [],
-    }
+    },
   },
 });
 </script>
