@@ -1,5 +1,9 @@
 <template>
   <div class="navBar">
+    <div class="sideBar-head">
+      <span>Successgy</span>
+      <font-awesome-icon icon="fa-solid fa-bars" />
+    </div>
     <div class="listButton">
       <router-link to="/esgDataCollection">
         <ButtonComponent
@@ -52,6 +56,25 @@ export default {
   background: lightcyan;
   width: 100%;
   height: 12vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sideBar-head {
+  font-size: 30px;
+  display: flex;
+  border-bottom: 1px gray solid;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  text-transform: uppercase;
+  height: 12vh;
+  font-weight: bold;
+  color: green;
+  background: lightcyan;
+  width: 18vw;
+  border-right: 1px gray solid;
 }
 .listButton {
   height: 100%;

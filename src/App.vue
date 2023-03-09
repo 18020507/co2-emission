@@ -1,30 +1,23 @@
 <template>
   <div id="app">
-    <SidebarComponent />
+    <NavbarComponent />
     <div class="main-content">
-      <NavbarComponent />
-      <router-view/>
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
-import SidebarComponent from "./components/SideBar.vue";
 import NavbarComponent from "./components/NavBar.vue";
 export default {
   name: "app",
-  components: { SidebarComponent, NavbarComponent },
+  components: { NavbarComponent },
 };
 </script>
 
 <style scoped>
-#app{
+#app {
   display: flex;
-  flex-direction: row;
-  padding: 0px;
-  margin: 0px;
-}
-.main-content{
-  width: 80vw;
+  flex-direction: column;
 }
 </style>
