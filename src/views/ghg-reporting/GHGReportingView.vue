@@ -97,20 +97,24 @@ export default defineComponent({
   height: 100vh;
   width: 18vw;
   border-right: 1px gray solid; 
+  margin: 0px;
 }
 
 .mobile-combustion-content {
+  width: 77vw;
   display: flex;
   margin: 30px;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .column-left {
-  width: 100%;
+  width: 70%;
   margin-right: 40px;
 }
 
 .column-right {
-  width: 400px;
+  width: 350px;
   background-color: rgb(190, 190, 190);
 }
 

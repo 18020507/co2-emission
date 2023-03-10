@@ -35,6 +35,7 @@ table, th, td {
 
 tr {
   height: 40px;
+  text-align: center;
 }
 
 table {

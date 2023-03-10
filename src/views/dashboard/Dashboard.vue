@@ -36,13 +36,13 @@ export default {
 
 .dashboard-content {
   display: flex;
+  justify-content: space-around;
 }
 
 .dashboard-chart {
-  width: 1000px;
-  height: 300px;
+  width: 1300px;
+  height: 500px;
   background-color: blue;
-  margin-left: 30px;
 }
 
 

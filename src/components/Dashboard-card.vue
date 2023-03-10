@@ -18,7 +18,7 @@ export default {
 
 <style scoped>
 .dashboard-card {
-    width: 200px;
+    width: 270px;
     height: 150px;
     background-color:green;
     border-radius: 5%;
