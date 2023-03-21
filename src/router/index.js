@@ -8,11 +8,19 @@ import MobileCombustionView from "@/views/ghg-reporting/mobileCombustion/MobileC
 import AccountSetupView from "@/views/account-setup/AccountSetupView.vue";
 import CompanyInformationView from "@/views/account-setup/company-infomation/CompanyInformationView.vue"
 import HomeView from "@/views/home/HomeVue.vue";
+import LoginView from "@/views/login/LoginView.vue";
 
 const home = [
   {
     path: "/home",
     component: HomeView,
+  },
+]
+
+const login = [
+  {
+    path: "/login",
+    component: LoginView,
   },
 ]
 
@@ -76,6 +84,7 @@ const routes = [
   ...dashboard,
   ...accountSetup,
   ...home,
+  ...login,
 ];
 
 const router = createRouter({

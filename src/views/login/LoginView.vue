@@ -1,19 +1,31 @@
 <template>
-  <div class="container-wrap">
-    <div class="container-login">
-      <h1>SUCCESSGY</h1>
-      <h2>Sign In</h2>
-      <div class="form-login-email">
-        <h4>Email</h4>
-        <input type="text" v-model="username" name="username" />
+  <div class="container">
+    <div class="screen">
+      <div class="screen__content">
+        <div class="login-form-header">SUCCESSGY</div>
+        <div class="sign-in">Sign In</div>
+        <form class="login">
+          <div class="login__field">
+            <h4>Email</h4>
+            <input
+              type="text"
+              class="login__input"
+              placeholder="User name / Email"
+            />
+          </div>
+          <div class="login__field">
+            <h4>Password</h4>
+            <input
+              type="password"
+              class="login__input"
+              placeholder="Password"
+            />
+          </div>
+          <router-link to="/home">
+            <button class="button login__submit">Sign In</button>
+          </router-link>
+        </form>
       </div>
-      <div class="form-login-password">
-        <h4>Password</h4>
-        <input type="password" v-model="password" name="password" />
-      </div>
-    </div>
-    <div class="button-login">
-      <button>Sign In</button>
     </div>
   </div>
 </template>
@@ -25,43 +37,93 @@ export default defineComponent({});
 </script>
 
 <style scoped>
-.container-wrap {
-  width: 404px;
-  height: 519px;
-  margin: auto;
-  background-color: #dcdcdc;
-  margin-top: 125px;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
-.container-login {
+.screen {
+  background: #ffffff;
+  position: relative;
+  height: 519px;
+  width: 404px;
+  border-radius: 4px;
+}
+
+.login-form-header {
+  color: #3e882b;
+  font-weight: 700;
+  font-size: 32px;
+  text-transform: uppercase;
   margin-top: 31px;
   margin-left: 38px;
 }
 
-h1 {
-  color: green;
-  font-family: "IBM Plex Sans";
-  font-style: normal;
+.sign-in {
+  font-weight: 400;
+  font-size: 28px;
+  text-transform: capitalize;
+  margin-top: 15px;
+  margin-left: 38px;
 }
 
-input {
-  width: 85%;
+.screen__content {
+  z-index: 1;
+  position: relative;
+  height: 100%;
+}
+
+.login {
+  margin-top: 10px;
+  margin-left: 38px;
+}
+
+.login__field {
+  position: relative;
+}
+
+.login__input {
+  border: none;
+  border-bottom: 2px solid #d1d1d4;
+  background: none;
+  padding: 10px;
+  padding-left: 24px;
+  font-weight: 700;
+  width: 75%;
+  transition: 0.2s;
+}
+
+.login__input:active,
+.login__input:focus,
+.login__input:hover {
+  outline: none;
+  border-bottom-color: #6a679e;
+}
+
+.login__submit {
+  background: #3e882b;
+  font-size: 14px;
+  margin-top: 48px;
+  padding: 16px 20px;
   border-radius: 5px;
-  height: 30px;
-}
-
-.button-login {
-  margin-top: 40px;
+  border: 1px solid #d4d3e8;
+  text-transform: uppercase;
+  font-weight: 700;
   display: flex;
+  width: 85%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.2s;
   justify-content: center;
   align-items: center;
 }
 
-button {
-  background-color: green;
-  color: white;
-  border-radius: 5px;
-  width: 214px;
-  height: 34px;
+.login__submit:active,
+.login__submit:focus,
+.login__submit:hover {
+  border-color: #6a679e;
+  outline: none;
 }
 </style>

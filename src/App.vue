@@ -1,15 +1,13 @@
 <template>
   <div id="app">
-    <VNavbar />
+    <VNavbar v-if="this.$route.fullPath != '/login'"/>
     <div class="main-content">
       <router-view />
     </div>
-    <!-- <LoginView /> -->
   </div>
 </template>
 
 <script>
-// import LoginView from "./views/login/LoginView.vue";
 import VNavbar from "./components/VNavbar.vue";
 export default {
   name: "app",
