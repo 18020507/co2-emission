@@ -1,42 +1,42 @@
 <template>
-  <div class="container">
-    <div class="account-setup-sidebar">
+  <div class="container-wrap">
+    <div class="side-bar">
       <SidebarAccountSetup />
     </div>
-    <div class="account-setup-content">
-      <IndustryServiceForm />
+    <div class="content-view">
+      <router-view />
     </div>
   </div>
 </template>
 
 <script>
 import { defineComponent } from "vue";
-import IndustryServiceForm from "./components/IndustryServiceForm.vue";
 import SidebarAccountSetup from "./components/SidebarAccountSetup.vue";
 
 export default defineComponent({
   components: {
-    IndustryServiceForm,
     SidebarAccountSetup,
   },
 });
 </script>
 
 <style scoped>
-.container {
+.container-wrap {
   display: flex;
   flex-direction: row;
   padding: 0px;
   margin: 0px;
 }
 
-.account-setup-sidebar {
+.side-bar {
   height: 100vh;
-  width: 18vw;
-  border-right: 1px gray solid;
-  margin: 0px;
+  width: 240px;
+  background-color: #FFFFFF;
+  border: 1px solid #ECECEC;
 }
-.account-setup-content {
-  width: 81vw;
+
+.content-view {
+  background-color: #f1f3f5;
+  width: calc(100% - 240px);
 }
 </style>

@@ -70,7 +70,7 @@ a {
   color: black;
 }
 .menu-link {
-  padding: 10px 0px;
+  padding: 8px 0px;
 }
 
 span {

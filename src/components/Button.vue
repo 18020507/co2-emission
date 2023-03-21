@@ -15,7 +15,7 @@ export default {
         },
         buttonIcon: {
             type: String,
-            default: () => "fa-solid fa-bars",
+            default: () => "",
         },
     },
 };
@@ -25,10 +25,13 @@ export default {
 .buttonStyle {
     background-color: green;
     text-align: center;
-    font-size: 10px;
+    font-size: 14px;
+    font-weight: 700;
     color: white;
-    border-radius: 6px;
-    padding: 10px 25px;
-    margin: 0px 10px;
+    padding: 10px;
+    border-radius: 5px;
+    width: 112px;
+    height: 36px;
+    margin-left: 10px;
 }
 </style>

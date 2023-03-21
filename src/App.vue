@@ -1,17 +1,19 @@
 <template>
   <div id="app">
-    <NavbarComponent />
+    <VNavbar />
     <div class="main-content">
       <router-view />
     </div>
+    <!-- <LoginView /> -->
   </div>
 </template>
 
 <script>
-import NavbarComponent from "./components/NavBar.vue";
+// import LoginView from "./views/login/LoginView.vue";
+import VNavbar from "./components/VNavbar.vue";
 export default {
   name: "app",
-  components: { NavbarComponent },
+  components: { VNavbar },
 };
 </script>
 
@@ -19,5 +21,13 @@ export default {
 #app {
   display: flex;
   flex-direction: column;
+}
+
+.main-content {
+  background-color: #f1f3f5;
+}
+
+* {
+font-family: 'IBM Plex Sans', sans-serif;
 }
 </style>

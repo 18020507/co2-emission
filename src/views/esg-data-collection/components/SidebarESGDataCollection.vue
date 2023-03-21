@@ -1,11 +1,11 @@
 <template>
-  <div class="menu-title">DATA REPORTING - GHG</div>
+  <div class="menu-title">ESG DATA COLLECTION</div>
   <div class="menu-content">
     <VSideBar v-for="node in nodes" :key="node.id" :node="node" />
   </div>
 </template>
-  
-  <script>
+
+<script>
 import VSideBar from "@/components/VSideBar.vue";
 import { defineComponent } from "vue";
 
@@ -16,52 +16,57 @@ export default defineComponent({
       return [
         {
           id: 1,
-          label: "Scope 1",
+          label: "Master Data",
           link: "",
           children: [
             {
               id: 2,
-              label: "Stationary Combustion",
+              label: "Customer",
               link: "",
               children: [],
             },
             {
               id: 3,
-              label: "Mobile Combustion",
-              link: "/ghgReporting/mobile-combustion",
-              children: [],
-            },
-            {
-              id: 4,
-              label: "Refrigerants",
-              link: "",
+              label: "Company",
+              link: "/esgDataCollection/company",
               children: [],
             },
           ],
         },
         {
-          id: 5,
-          label: "Scope 2",
+          id: 4,
+          label: "Transaction Data",
           link: "",
           children: [
             {
-              id: 6,
-              label: "Purchased Electricity",
-              link: "",
-              children: [],
-            },
-          ],
-        },
-        {
-          id: 6,
-          label: "Scope 3",
-          link: "",
-          children: [
-            {
-              id: 7,
+              id: 5,
               label: "Transportation",
               link: "",
+              children: [
+                {
+                  id: 6,
+                  label: "Heavy Trucks",
+                  link: "/esgDataCollection/heavy-truck",
+                },
+              ],
+            },
+            {
+              id: 7,
+              label: "Facility",
+              link: "/esgDataCollection/facility",
               children: [],
+            },
+            {
+              id: 8,
+              label: "Utility",
+              link: "",
+              children: [
+                {
+                  id: 9,
+                  label: "Electricity",
+                  link: "/esgDataCollection/electricity",
+                },
+              ],
             },
           ],
         },
@@ -70,8 +75,8 @@ export default defineComponent({
   },
 });
 </script>
-  
-  <style scoped>
+
+<style scoped>
 .menu-title {
   padding: 0px;
   margin-top: 39px;

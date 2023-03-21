@@ -34,18 +34,20 @@ export default {
 table,
 th,
 td {
-  border: 2px solid black;
+  border: 2px solid #B1B1B1;
   border-collapse: collapse;
 }
 
 tr {
-  height: 40px;
+  height: 38px;
+  text-align: center;
+  font-weight: bold;
 }
 
 table {
   width: 100%;
 }
 .table-head {
-  background-color: lightgreen;
+  background-color: #B1B1B1;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="container-wrap">
     <div class="side-bar">
-      <SidebarGHGReporting />
+      <SidebarESGDataCollection />
     </div>
     <div class="content-view">
       <router-view />
@@ -11,11 +11,9 @@
 
 <script>
 import { defineComponent } from "vue";
-import SidebarGHGReporting from "./components/SidebarGHGReporting.vue";
+import SidebarESGDataCollection from "./components/SidebarESGDataCollection.vue";
 export default defineComponent({
-  components: {
-    SidebarGHGReporting,
-  },
+  components: { SidebarESGDataCollection },
 });
 </script>
 
@@ -30,8 +28,8 @@ export default defineComponent({
 .side-bar {
   height: 100vh;
   width: 18vw;
-  background-color: #ffffff;
-  border: 1px solid #ececec;
+  background-color: #FFFFFF;
+  border: 1px solid #ECECEC;
 }
 
 .content-view {

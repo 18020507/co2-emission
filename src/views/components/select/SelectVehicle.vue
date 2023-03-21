@@ -1,5 +1,5 @@
 <template>
-    <VSelect :options="options"/>
+    <VSelect :options="options" placeholder="Vehicle"/>
   </template>
   
   <script>
