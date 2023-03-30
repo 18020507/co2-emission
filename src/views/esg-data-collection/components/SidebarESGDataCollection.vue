@@ -1,5 +1,5 @@
 <template>
-  <div class="menu-title">ESG DATA COLLECTION</div>
+  <div class="menu-title">DATA COLLECTION TABLE</div>
   <div class="menu-content">
     <VSideBar v-for="node in nodes" :key="node.id" :node="node" />
   </div>
@@ -21,14 +21,14 @@ export default defineComponent({
           children: [
             {
               id: 2,
-              label: "Customer",
-              link: "",
+              label: "Facility",
+              link: "/esgDataCollection/facility-master",
               children: [],
             },
             {
               id: 3,
-              label: "Company",
-              link: "/esgDataCollection/company",
+              label: "Transportation",
+              link: "/esgDataCollection/transport-master",
               children: [],
             },
           ],
@@ -40,33 +40,15 @@ export default defineComponent({
           children: [
             {
               id: 5,
-              label: "Transportation",
-              link: "",
-              children: [
-                {
-                  id: 6,
-                  label: "Heavy Trucks",
-                  link: "/esgDataCollection/heavy-truck",
-                },
-              ],
-            },
-            {
-              id: 7,
               label: "Facility",
-              link: "/esgDataCollection/facility",
+              link: "/esgDataCollection/facility-activity",
               children: [],
             },
             {
-              id: 8,
-              label: "Utility",
-              link: "",
-              children: [
-                {
-                  id: 9,
-                  label: "Electricity",
-                  link: "/esgDataCollection/electricity",
-                },
-              ],
+              id: 7,
+              label: "Transportation",
+              link: "/esgDataCollection/transport-activity",
+              children: [],
             },
           ],
         },

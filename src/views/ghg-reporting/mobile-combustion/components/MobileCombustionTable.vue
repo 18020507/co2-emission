@@ -1,18 +1,18 @@
 <template>
   <table>
     <tr class="table-head">
+      <th>Year</th>
       <th>Vehicle ID</th>
-      <th>truck Make</th>
-      <th>Truck Model</th>
-      <th>Truck Year</th>
-      <th>Truck Mileage</th>
+      <th>Amount of Fuel</th>
+      <th>Units</th>
+      <th>CO2 (tonnes)</th>
     </tr>
     <tr v-for="item in tableData" :key="item.id">
+      <td>{{ item.year }}</td>
       <td>{{ item.vehicleID }}</td>
-      <td>{{ item.truckMake }}</td>
-      <td>{{ item.truckModel }}</td>
-      <td>{{ item.truckYear }}</td>
-      <td>{{ item.truckMileage }}</td>
+      <td>{{ item.amountOfFuel }}</td>
+      <td>{{ item.units }}</td>
+      <td>{{ item.co2 }}</td>
     </tr>
   </table>
 </template>
@@ -20,18 +20,18 @@
 <script>
 import { defineComponent } from "vue";
 
-export default defineComponent ({
-    props: {
-    tableData: Array
-  }
-})
+export default defineComponent({
+  props: {
+    tableData: Array,
+  },
+});
 </script>
 
 <style scoped>
 table,
 th,
 td {
-  border: 2px solid #B1B1B1;
+  border: 2px solid #b1b1b1;
   border-collapse: collapse;
 }
 
@@ -42,9 +42,9 @@ tr {
 }
 
 table {
-  width: 80%;
+  width: 100%;
 }
 .table-head {
-  background-color: #B1B1B1;
+  background-color: #b1b1b1;
 }
 </style>

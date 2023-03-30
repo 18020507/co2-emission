@@ -1,16 +1,62 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret, faBars, faChevronRight, faList, faBoxArchive, faLayerGroup, faArrowsRotate, faPlus, faFileImport, faLink, faUser, faFileExport, faChevronDown, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
-import router from './router'
-library.add(faUserSecret, faBars, faChevronRight, faChevronLeft, faChevronDown, faList, faBoxArchive, faLayerGroup, faArrowsRotate, faPlus, faFileImport, faLink, faUser, faFileExport)
+import { createApp } from "vue";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import {
+  faUserSecret,
+  faBars,
+  faChevronRight,
+  faList,
+  faBoxArchive,
+  faLayerGroup,
+  faArrowsRotate,
+  faPlus,
+  faFileImport,
+  faLink,
+  faUser,
+  faFileExport,
+  faChevronDown,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
-import VueCustomSelectBox from 'vue-custom-select-box';
+import router from "./router";
+import App from "./App.vue";
+library.add(
+  faUserSecret,
+  faBars,
+  faChevronRight,
+  faChevronLeft,
+  faChevronDown,
+  faList,
+  faBoxArchive,
+  faLayerGroup,
+  faArrowsRotate,
+  faPlus,
+  faFileImport,
+  faLink,
+  faUser,
+  faFileExport
+);
+
+import VueCustomSelectBox from "vue-custom-select-box";
 import "vue-custom-select-box/style.css";
 
+import { createPinia } from "pinia";
 
-const app = createApp(App)
-.component('font-awesome-icon', FontAwesomeIcon, 'vue-custom-select-box', VueCustomSelectBox)
-app.use(router)
-app.mount('#app');
+const pinia = createPinia();
+
+axios.defaults.baseURL = "http://localhost:8000";
+const accessToken = localStorage.getItem("access_token");
+if (accessToken) {
+  axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
+}
+
+const app = createApp(App).component(
+  "font-awesome-icon",
+  FontAwesomeIcon,
+  "vue-custom-select-box",
+  VueCustomSelectBox
+);
+app.use(pinia)
+app.use(router);
+app.mount("#app");

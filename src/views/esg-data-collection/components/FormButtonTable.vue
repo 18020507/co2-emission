@@ -1,9 +1,9 @@
 <template>
   <div class="list-button">
-    <ButtonVue buttonText="Add new row" />
+    <ButtonVue buttonText="Add new row" @click="addNewRow" />
     <ButtonVue buttonText="Import Excel" />
     <ButtonVue buttonText="Connect App" />
-    <ButtonVue buttonText="Commit Data" />
+    <ButtonVue buttonText="Commit Data" @click="commitData" />
   </div>
 </template>
 
@@ -12,6 +12,16 @@ import ButtonVue from "@/components/Button.vue";
 import { defineComponent } from "vue";
 export default defineComponent({
   components: { ButtonVue },
+  props: {
+    addNewRow: {
+      type: Function,
+      default: () => ({}),
+    },
+    commitData: {
+      type: Function,
+      default: () => ({}),
+    },
+  },
 });
 </script>
 

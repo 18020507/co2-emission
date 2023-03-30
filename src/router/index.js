@@ -2,17 +2,22 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from "@/views/dashboard/Dashboard.vue";
 import GHGReportingView from "@/views/ghg-reporting/GHGReportingView.vue";
 import ESGDataCollectionView from "@/views/esg-data-collection/ESGDataCollectionView.vue";
-import HeavyTruckView from "@/views/esg-data-collection/heavy-truck/HeavyTruckView.vue";
-import CompanyView from "@/views/esg-data-collection/company/CompanyView.vue"
-import MobileCombustionView from "@/views/ghg-reporting/mobileCombustion/MobileCombustionView.vue";
+import TransportationView from "@/views/esg-data-collection/transportation/TransportationView.vue"
+import MobileCombustionView from "@/views/ghg-reporting/mobile-combustion/MobileCombustionView.vue";
+import SummaryReportView from "@/views/ghg-reporting/summary-result/SummaryResultView.vue";
+import StationaryCombustionView from "@/views/ghg-reporting/stationary-combustion/StationaryCombustionView.vue";
 import AccountSetupView from "@/views/account-setup/AccountSetupView.vue";
 import CompanyInformationView from "@/views/account-setup/company-infomation/CompanyInformationView.vue"
 import HomeView from "@/views/home/HomeVue.vue";
 import LoginView from "@/views/login/LoginView.vue";
+import FacilityView from "@/views/esg-data-collection/facility/FacilityView.vue"
+import FacilityActivityView from "@/views/esg-data-collection/facility-activity/FacilityActivityView.vue";
+import TransportationActivityView from "@/views/esg-data-collection/transportation-activity/TransportationActivityView.vue";
 
 const home = [
   {
     path: "/home",
+    name: 'home',
     component: HomeView,
   },
 ]
@@ -30,14 +35,24 @@ const esgDataCollection = [
     component: ESGDataCollectionView,
     children: [
       {
-        path: "heavy-truck",
-        name: "dataCollection-heavyTruck",
-        component: HeavyTruckView,
+        path: "transport-master",
+        name: "dataCollection-trans",
+        component: TransportationView,
       },
       {
-        path: "company",
-        name: "dataCollection-company",
-        component: CompanyView,
+        path: "transport-activity",
+        name: "dataCollection-transportActivity",
+        component: TransportationActivityView,
+      },
+      {
+        path: "facility-master",
+        name: "dataCollection-facilityMaster",
+        component: FacilityView,
+      },
+      {
+        path: "facility-activity",
+        name: "dataCollection-facilityActivity",
+        component: FacilityActivityView,
       },
     ],
   },
@@ -49,9 +64,19 @@ const ghgRepoting = [
     component: GHGReportingView,
     children: [
       {
+        path: "summary-result",
+        name: "ghgReporting-summaryResult",
+        component: SummaryReportView,
+      },
+      {
         path: "mobile-combustion",
         name: "ghgReporting-mobileCombustion",
         component: MobileCombustionView,
+      },
+      {
+        path: "stationary-combustion",
+        name: "ghgReporting-stationaryCombustion",
+        component: StationaryCombustionView,
       },
     ],
   },
@@ -79,6 +104,10 @@ const accountSetup = [
 ];
 
 const routes = [
+  {
+    path: "/",
+    redirect: "/login",
+  },
   ...esgDataCollection,
   ...ghgRepoting,
   ...dashboard,

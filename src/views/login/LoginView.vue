@@ -11,6 +11,7 @@
               type="text"
               class="login__input"
               placeholder="User name / Email"
+              v-model="loginForm.username"
             />
           </div>
           <div class="login__field">
@@ -19,11 +20,12 @@
               type="password"
               class="login__input"
               placeholder="Password"
+              v-model="loginForm.password"
             />
           </div>
-          <router-link to="/home">
-            <button class="button login__submit">Sign In</button>
-          </router-link>
+          <button class="button login__submit" @click="getLogin">
+            Sign In
+          </button>
         </form>
       </div>
     </div>
@@ -32,8 +34,51 @@
 
 <script>
 import { defineComponent } from "vue";
+import { login, getAuthInfo } from "@/api/index.js";
+import axios from "axios";
 
-export default defineComponent({});
+import { useUserStore } from "@/store/userStore";
+import { first } from "lodash-es";
+
+export default defineComponent({
+  setup() {
+    const userStore = useUserStore();
+
+    return { userStore };
+  },
+  data() {
+    return {
+      loginForm: {
+        username: null,
+        password: null,
+      },
+    };
+  },
+  methods: {
+    async getLogin(event) {
+      event.preventDefault();
+      const { username, password } = this.loginForm;
+      const response = await login({
+        username_id: username,
+        password,
+      });
+      // if (response.token) {
+      //   localStorage.setItem("token", response.token);
+      // }
+      if (response.status === 200) {
+        //TODO: HOTFIX
+        localStorage.setItem("access_token", response.data.access_token);
+        axios.defaults.headers.common[
+          "Authorization"
+        ] = `Bearer ${response.data.access_token}`;
+
+        const userInfo = await getAuthInfo();
+        this.userStore.setUserInfo(first(userInfo.data.data));
+        this.$router.push("home");
+      }
+    },
+  },
+});
 </script>
 
 <style scoped>
@@ -115,7 +160,7 @@ export default defineComponent({});
   width: 85%;
   color: #ffffff;
   cursor: pointer;
-  transition: 0.2s;
+
   justify-content: center;
   align-items: center;
 }
