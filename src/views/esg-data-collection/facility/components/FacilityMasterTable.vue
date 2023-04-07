@@ -60,8 +60,7 @@ export default defineComponent({
   },
   methods: {
     handleUpdateInput(index, type, value) {
-      console.log({index, type})
-      this.$emit('handleUpdateTableData', {index, type, value})
+      this.$emit('handleUpdateTableFacilityData', {index, type, value})
     }
   }
 });
@@ -79,6 +78,10 @@ tr {
   height: 38px;
   text-align: center;
   font-weight: bold;
+}
+
+input {
+  width: 120px;
 }
 
 table {

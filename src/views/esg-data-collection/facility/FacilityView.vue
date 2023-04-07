@@ -8,25 +8,28 @@
       <div class="table">
         <FacilityMasterTableVue
           :tableData="listFacilities"
-          @handleUpdateTableData="handleUpdateTableData"
+          @handleUpdateTableFacilityData="handleUpdateTableFacilityData"
         />
       </div>
       <div class="form-button">
         <FormButtonTableVue
           :addNewRow="() => addNewRow('facilityMaster')"
-          :commitData="commitData"
+          :commitData="() => commitData('facilityMaster')"
         />
       </div>
     </div>
     <div class="master-data-table">
       <div class="table-name">Forklift</div>
       <div class="table">
-        <ForkliftMasterTable :tableData="listForklift" />
+        <ForkliftMasterTable
+          :tableData="listForklift"
+          @handleUpdateTableForkliftData="handleUpdateTableForkliftData"
+        />
       </div>
       <div class="form-button">
         <FormButtonTableVue
           :addNewRow="() => addNewRow('forkliftMaster')"
-          :commitData="commitData"
+          :commitData="() => this.commitData('forkliftMaster')"
         />
       </div>
     </div>
@@ -42,6 +45,7 @@ import FormButtonTableVue from "../components/FormButtonTable.vue";
 import ForkliftMasterTable from "./components/ForkliftMasterTable.vue";
 import FacilityMasterTableVue from "./components/FacilityMasterTable.vue";
 import { useUserStore } from "@/store/userStore";
+import { createDataMaster } from "@/api/facility_master_data/facility_master_data";
 
 export default defineComponent({
   components: {
@@ -118,12 +122,28 @@ export default defineComponent({
         });
       }
     },
-    handleUpdateTableData({ index, type, value }) {
+    handleUpdateTableFacilityData({ index, type, value }) {
       this.listFacilities[index][type] = value;
     },
-    commitData(type) {
-      if (type === "a") {
-        this.listHeavyTrucks.push();
+    handleUpdateTableForkliftData({ index, type, value }) {
+      this.listForklift[index][type] = value;
+    },
+    async commitData(type) {
+      if (type === "facilityMaster") {
+        const response = await createDataMaster(
+          this.listFacilities.map((item) => ({
+            company_id: this.userStore.getUserInfo().company_id,
+            facility_address: item.facilityAddress,
+            facility_type: item.facilityType,
+            employee_no: parseInt(item.employeeNum),
+            forklift_no: parseInt(item.forkliftNum),
+          }))
+        );
+        if (response.status === 200) {
+          console.log("Success");
+        }
+      } else if (type === "forkliftMaster") {
+        this.listForklift.push();
       }
     },
   },

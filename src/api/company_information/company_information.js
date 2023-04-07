@@ -9,3 +9,7 @@ export const getCompanyInformation = async () => {
     params: { page_size: 10, page: 1, sort_by: "id", order: "desc" },
   });
 };
+
+export const getCompanyInformationById = async (company_id) => {
+  return await axios.get(`/api/v1/company/${company_id}`);
+};

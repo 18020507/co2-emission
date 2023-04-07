@@ -1,12 +1,9 @@
 import axios from "axios";
-import { isArray } from "lodash-es";
 
-export const getTransAction = async (trans_id) => {
-  let ids = trans_id;
-  if (isArray(trans_id)) {
-    ids = trans_id.join(",");
-  }
-  return await axios.get(`/api/v1/transportation-collection/${ids}`);
+export const getTransAction = async (company_id, query={}) => {
+  return await axios.get(`/api/v1/transportation-collection/${company_id}`, {
+    params: {"fuel_source_name": query.fuelSource}
+  });
 };
 
 export const createTransAction = async (payload) => {

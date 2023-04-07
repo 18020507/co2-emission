@@ -1,6 +1,6 @@
 <template>
-  <select class="select">
-    <option value="null" disabled selected hidden>{{ placeholder }}</option>
+  <select class="select" :value="value" @change="handleChange">
+    <option v-if="placeholder" value="" disabled selected hidden>{{ placeholder }}</option>
     <option v-for="item in options" :key="item.value" :value="item.value">{{ item.label }}</option>
   </select>
 </template>
@@ -16,9 +16,18 @@ export default defineComponent({
     },
     placeholder: {
       type: String,
-      default: () => "",
+    },
+    value: {
+      type: String
     }
   },
+  methods: {
+    handleChange(event) {
+      this.$emit('update:value', event.target.value)
+      this.$emit('change', event.target.value)
+    }
+  },
+  emits: ["update:value", "change"]
 });
 </script>
 

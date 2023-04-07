@@ -1,13 +1,9 @@
 import axios from "axios";
-import { isArray } from "lodash-es";
 
-export const getFacilityAction = async (facility_id) => {
-  let ids = facility_id;
-  if (isArray(facility_id)) {
-    ids = facility_id.join(",");
-  }
-
-  return await axios.get(`/api/v1/facility-collection/${ids}`);
+export const getFacilityAction = async (company_id, query={}) => {
+  return await axios.get(`/api/v1/facility-collection/${company_id}`, {
+    params: {"fuel_source_name": query.fuelSource, "activity_type_name": query.activityType},
+  });
 };
 
 export const createFacilityAction = async (payload) => {

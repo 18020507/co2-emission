@@ -6,11 +6,14 @@
     <div class="master-data-table">
       <div class="table-name">Truck</div>
       <div class="table">
-        <TruckMasterTable :tableData="listTruckes" />
+        <TruckMasterTable 
+          :tableData="listTruckes" 
+          @handleUpdateTableTransData="handleUpdateTableTransData"
+        />
       </div>
       <div class="form-button">
         <FormButtonTableVue
-          :addNewRow="() => addNewRow('facilityMaster')"
+          :addNewRow="() => addNewRow('TransMaster')"
           :commitData="commitData"
         />
       </div>
@@ -22,7 +25,7 @@
 import { defineComponent } from "vue";
 import FormButtonTableVue from "../components/FormButtonTable.vue";
 import TruckMasterTable from "./components/TruckMasterTable.vue";
-import { getDataFacility, getDataTransport } from "@/api/index.js";
+import { getDataTransport } from "@/api/index.js";
 import { useUserStore } from "@/store/userStore";
 export default defineComponent({
   components: {
@@ -58,15 +61,19 @@ export default defineComponent({
   },
   methods: {
     addNewRow(type) {
-      if (type === "facilityMaster") {
+      if (type === "TransMaster") {
         this.listTruckes.push({
           facilityID: "",
           facilityType: "",
           facilityAddress: "",
           employeeNum: "",
           forkliftNum: "",
+          isEditable: true,
         });
       }
+    },
+    handleUpdateTableTransData({ index, type, value }) {
+      this.listTruckes[index][type] = value;
     },
     commitData(type) {
       if (type === "a") {
