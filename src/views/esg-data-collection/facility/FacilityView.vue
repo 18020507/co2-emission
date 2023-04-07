@@ -143,7 +143,18 @@ export default defineComponent({
           console.log("Success");
         }
       } else if (type === "forkliftMaster") {
-        this.listForklift.push();
+        const response = await createDataMaster(
+          this.listForklift.map((item) => ({
+            facility_master_data_id: item.facilityID,
+            forklift_model: item.forkliftModel,
+            fuel_type: item.fuelType,
+            fuel_efficiency: parseInt(item.fuelEfficiency),
+            units: item.unit,
+          }))
+        );
+        if (response.status === 200) {
+          console.log("Success");
+        }
       }
     },
   },

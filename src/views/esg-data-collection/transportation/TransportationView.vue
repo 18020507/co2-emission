@@ -6,8 +6,8 @@
     <div class="master-data-table">
       <div class="table-name">Truck</div>
       <div class="table">
-        <TruckMasterTable 
-          :tableData="listTruckes" 
+        <TruckMasterTable
+          :tableData="listTruckes"
           @handleUpdateTableTransData="handleUpdateTableTransData"
         />
       </div>
@@ -25,7 +25,7 @@
 import { defineComponent } from "vue";
 import FormButtonTableVue from "../components/FormButtonTable.vue";
 import TruckMasterTable from "./components/TruckMasterTable.vue";
-import { getDataTransport } from "@/api/index.js";
+import { createTransDataMaster, getDataTransport } from "@/api/index.js";
 import { useUserStore } from "@/store/userStore";
 export default defineComponent({
   components: {
@@ -63,11 +63,11 @@ export default defineComponent({
     addNewRow(type) {
       if (type === "TransMaster") {
         this.listTruckes.push({
-          facilityID: "",
-          facilityType: "",
-          facilityAddress: "",
-          employeeNum: "",
-          forkliftNum: "",
+          vehicleID: "",
+          truckMake: "",
+          truckModel: "",
+          truckYear: "",
+          truckMileage: "",
           isEditable: true,
         });
       }
@@ -75,9 +75,19 @@ export default defineComponent({
     handleUpdateTableTransData({ index, type, value }) {
       this.listTruckes[index][type] = value;
     },
-    commitData(type) {
-      if (type === "a") {
-        this.listHeavyTrucks.push();
+    async commitData() {
+      const response = await createTransDataMaster(
+        this.listTruckes.map((item) => ({
+          company_id: this.userStore.getUserInfo().company_id,
+          vehicle_type: "truck",
+          vehicle_name: item.truckMake,
+          vehicle_model: item.truckModel,
+          vehicle_year: parseInt(item.truckYear),
+          vehicle_mileage: parseInt(item.truckMileage),
+        }))
+      );
+      if (response.status === 200) {
+        console.log("Success");
       }
     },
   },

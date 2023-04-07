@@ -6,6 +6,6 @@ export const getForklift = async (facilityMasterDataId) => {
   );
 };
 
-export const createDataMaster = async (payload) => {
+export const createForkliftDataMaster = async (payload) => {
   return await axios.post(`/api/v1/forklift-master-data`, payload);
 };
