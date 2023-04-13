@@ -128,6 +128,40 @@ export default defineComponent({
     handleUpdateTableForkliftData({ index, type, value }) {
       this.listForklift[index][type] = value;
     },
+    async handleFetchFacility() {
+      if (!this.userStore.getUserInfo()) {
+        this.$router.go("/home");
+      }
+
+      const response = await getDataFacility(
+        this.userStore.getUserInfo().company_id
+      );
+      this.listFacilities = response.data.data?.map((item) => ({
+        facilityID: item.id,
+        facilityType: item.facility_type,
+        facilityAddress: item.facility_address,
+        employeeNum: item.employee_no,
+        forkliftNum: item.forklift_no,
+      }));
+    },
+
+    async handleFetchForklift() {
+      if (!this.userStore.getUserInfo()) {
+        this.$router.go("/home");
+      }
+
+      const response = await getDataFacility(
+        this.userStore.getUserInfo().company_id
+      );
+      this.listFacilities = response.data.data?.map((item) => ({
+        facilityID: item.id,
+        facilityType: item.facility_type,
+        facilityAddress: item.facility_address,
+        employeeNum: item.employee_no,
+        forkliftNum: item.forklift_no,
+      }));
+    },
+
     async commitData(type) {
       if (type === "facilityMaster") {
         const response = await createDataMaster(
@@ -141,6 +175,7 @@ export default defineComponent({
         );
         if (response.status === 200) {
           console.log("Success");
+          this.handleFetchFacility();
         }
       } else if (type === "forkliftMaster") {
         const response = await createDataMaster(
@@ -154,6 +189,7 @@ export default defineComponent({
         );
         if (response.status === 200) {
           console.log("Success");
+          window.location.reload();
         }
       }
     },

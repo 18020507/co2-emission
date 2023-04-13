@@ -75,6 +75,23 @@ export default defineComponent({
     handleUpdateTableTransData({ index, type, value }) {
       this.listTruckes[index][type] = value;
     },
+    async handleFetchTransportation() {
+      if (!this.userStore.getUserInfo()) {
+        this.$router.go("/home");
+      }
+
+      const response = await getDataTransport(
+        this.userStore.getUserInfo().company_id
+      );
+      this.listTruckes = response.data.data?.map((item) => ({
+        vehicleID: item.id,
+        truckMake: item.vehicle_name,
+        truckModel: item.vehicle_model,
+        truckYear: item.vehicle_year,
+        truckMileage: item.vehicle_mileage,
+      }));
+    },
+
     async commitData() {
       const response = await createTransDataMaster(
         this.listTruckes.map((item) => ({
@@ -88,6 +105,7 @@ export default defineComponent({
       );
       if (response.status === 200) {
         console.log("Success");
+        this.handleFetchTransportation();
       }
     },
   },
