@@ -13,6 +13,7 @@ import LoginView from "@/views/login/LoginView.vue";
 import FacilityView from "@/views/esg-data-collection/facility/FacilityView.vue"
 import FacilityActivityView from "@/views/esg-data-collection/facility-activity/FacilityActivityView.vue";
 import TransportationActivityView from "@/views/esg-data-collection/transportation-activity/TransportationActivityView.vue";
+import CDPReportingViewVue from "@/views/cdp-reporting/CDPReportingView.vue";
 
 const home = [
   {
@@ -82,6 +83,14 @@ const ghgRepoting = [
   },
 ];
 
+const cdpRepoting = [
+  {
+    path: "/cdpReporting",
+    component: CDPReportingViewVue,
+    children: [],
+  },
+];
+
 const dashboard = [
   {
     path: "/dashboard",
@@ -110,6 +119,7 @@ const routes = [
   },
   ...esgDataCollection,
   ...ghgRepoting,
+  ...cdpRepoting,
   ...dashboard,
   ...accountSetup,
   ...home,

@@ -39,7 +39,11 @@
 <script>
 import { defineComponent } from "vue";
 
-import { getDataFacility, getForklift } from "@/api/index.js";
+import {
+  createForkliftDataMaster,
+  getDataFacility,
+  getForklift,
+} from "@/api/index.js";
 
 import FormButtonTableVue from "../components/FormButtonTable.vue";
 import ForkliftMasterTable from "./components/ForkliftMasterTable.vue";
@@ -146,20 +150,24 @@ export default defineComponent({
     },
 
     async handleFetchForklift() {
-      if (!this.userStore.getUserInfo()) {
-        this.$router.go("/home");
-      }
-
-      const response = await getDataFacility(
-        this.userStore.getUserInfo().company_id
-      );
-      this.listFacilities = response.data.data?.map((item) => ({
-        facilityID: item.id,
-        facilityType: item.facility_type,
-        facilityAddress: item.facility_address,
-        employeeNum: item.employee_no,
-        forkliftNum: item.forklift_no,
-      }));
+      this.listForklift = (
+        await Promise.all(
+          this.listFacilities
+            .map((item) => item.facilityID)
+            .map((facilityID) => {
+              return getForklift(facilityID).then((res) =>
+                res.data.data.map((item) => ({
+                  forkliftID: item.id,
+                  forkliftModel: item.forklift_model,
+                  fuelType: item.fuel_type,
+                  fuelEfficiency: item.fuel_efficiency,
+                  unit: item.units,
+                  facilityID: item.facility_master_data_id,
+                }))
+              );
+            })
+        )
+      ).flat();
     },
 
     async commitData(type) {
@@ -178,7 +186,7 @@ export default defineComponent({
           this.handleFetchFacility();
         }
       } else if (type === "forkliftMaster") {
-        const response = await createDataMaster(
+        const response = await createForkliftDataMaster(
           this.listForklift.map((item) => ({
             facility_master_data_id: item.facilityID,
             forklift_model: item.forkliftModel,
@@ -189,7 +197,7 @@ export default defineComponent({
         );
         if (response.status === 200) {
           console.log("Success");
-          window.location.reload();
+          this.handleFetchForklift();
         }
       }
     },

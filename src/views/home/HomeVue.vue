@@ -42,7 +42,7 @@
         </div>
         <div class="section-content">
           <HomeCard cardName="GHG Reporting" cardMemo="Scope 1 & 2"  cardLink="/ghgReporting" />
-          <HomeCard cardName="CDP Reporting" cardLink="/" />
+          <HomeCard cardName="CDP Reporting" cardLink="/cdpReporting" />
           <HomeCard cardName="Dashboard"  cardLink="/dashboard" />
         </div>
       </div>

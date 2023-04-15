@@ -50,13 +50,16 @@
         </div>
       </div>
     </div>
-    <button class="button_submit" @click="handleSubmit">Submit</button>
+    <div class="section-footer">
+      <ButtonVue buttonText="Submit" @click="handleSubmit" />
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted } from "vue";
 import { first } from "lodash-es";
+import ButtonVue from "@/components/Button.vue";
 
 import {
   createCompanyInformation,
@@ -114,7 +117,6 @@ onMounted(async () => {
   const company = first(data.data);
 
   Object.assign(companyForm.value, {
-    
     legalName: company?.legal_name,
     legalAddress: company?.legal_address,
     EmployeeIdentificationNumber: company?.employer_identification_number,
@@ -155,5 +157,12 @@ input {
 
 .column {
   margin-right: 100px;
+}
+
+.section-footer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 150px;
 }
 </style>
