@@ -21,6 +21,13 @@ import axios from "axios";
 
 import router from "./router";
 import App from "./App.vue";
+
+// Import echarts and vue-echarts components
+import * as echarts from 'echarts';
+import ECharts from 'vue-echarts';
+import 'echarts/lib/chart/line';
+import 'echarts/lib/component/tooltip';
+
 library.add(
   faUserSecret,
   faBars,
@@ -51,12 +58,16 @@ if (accessToken) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 }
 
-const app = createApp(App).component(
-  "font-awesome-icon",
-  FontAwesomeIcon,
-  "vue-custom-select-box",
-  VueCustomSelectBox
-);
-app.use(pinia)
+const app = createApp(App)
+  .component(
+    "font-awesome-icon",
+    FontAwesomeIcon,
+  )
+  .component('v-chart', ECharts)
+  .component('VueCustomSelectBox', VueCustomSelectBox);
+
+app.config.globalProperties.$echarts = echarts;
+
+app.use(pinia);
 app.use(router);
 app.mount("#app");
