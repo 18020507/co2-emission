@@ -1,7 +1,6 @@
 <template>
   <div class="filter-form">
     <SelectClient />
-    <SelectVendor />
     <SelectFacility />
     <SelectVehicle />
   </div>
@@ -11,14 +10,12 @@
 import { defineComponent } from "vue";
 import {
   SelectClient,
-  SelectVendor,
   SelectFacility,
   SelectVehicle,
 } from "@/views/components/select";
 export default defineComponent({
   components: {
     SelectClient,
-    SelectVendor,
     SelectFacility,
     SelectVehicle,
   },

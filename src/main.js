@@ -22,11 +22,7 @@ import axios from "axios";
 import router from "./router";
 import App from "./App.vue";
 
-// Import echarts and vue-echarts components
-import * as echarts from 'echarts';
-import ECharts from 'vue-echarts';
-import 'echarts/lib/chart/line';
-import 'echarts/lib/component/tooltip';
+import VueCharts from 'vue-echarts';
 
 library.add(
   faUserSecret,
@@ -45,9 +41,6 @@ library.add(
   faFileExport
 );
 
-import VueCustomSelectBox from "vue-custom-select-box";
-import "vue-custom-select-box/style.css";
-
 import { createPinia } from "pinia";
 
 const pinia = createPinia();
@@ -63,10 +56,8 @@ const app = createApp(App)
     "font-awesome-icon",
     FontAwesomeIcon,
   )
-  .component('v-chart', ECharts)
-  .component('VueCustomSelectBox', VueCustomSelectBox);
+  .component('v-chart', VueCharts)
 
-app.config.globalProperties.$echarts = echarts;
 
 app.use(pinia);
 app.use(router);
