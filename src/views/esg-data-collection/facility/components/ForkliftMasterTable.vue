@@ -94,6 +94,7 @@ input {
 
 table {
   width: 80%;
+  table-layout: fixed;
 }
 .table-head {
   background-color: #b1b1b1;

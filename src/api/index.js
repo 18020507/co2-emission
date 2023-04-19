@@ -12,3 +12,4 @@ export { getFacilityAction, createFacilityAction } from "./facility_action/facil
 export { getTransAction, createTransAction } from "./trans_action/trans_action.js"
 export { getFuelSource } from "./fuel_source/fuel_source.js"
 export { getActivityType } from "./activity_type/activity_type.js"
+export { getDashboardData, getDashboardChartData } from "./dashboard/dashboard.js"

@@ -44,6 +44,7 @@
   
   table {
     width: 100%;
+    table-layout: fixed;
   }
   .table-head {
     background-color: #B1B1B1;
