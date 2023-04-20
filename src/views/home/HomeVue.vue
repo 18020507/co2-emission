@@ -24,7 +24,7 @@
             cardName="Data Templates Explorer"
             cardContent="100"
             cardMemo="Templates Available"
-            cardLink="/"
+            cardLink="/data-template-explorer"
           />
           <HomeCard
             cardName="Data Collection Table"

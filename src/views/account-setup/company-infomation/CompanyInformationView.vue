@@ -60,10 +60,11 @@
 import { ref, onMounted } from "vue";
 import { first } from "lodash-es";
 import ButtonVue from "@/components/Button.vue";
+import { useUserStore } from "@/store/userStore";
 
 import {
   createCompanyInformation,
-  getCompanyInformation,
+  getCompanyInformationById,
 } from "@/api/index.js";
 
 const companyForm = ref({
@@ -112,8 +113,11 @@ const handleSubmit = async (event) => {
 };
 
 onMounted(async () => {
-  const { data } = await getCompanyInformation();
-
+  const userStore = useUserStore();
+  const { data } = await getCompanyInformationById(
+    userStore.getUserInfo().company_id
+  );
+  console.log(data.data);
   const company = first(data.data);
 
   Object.assign(companyForm.value, {

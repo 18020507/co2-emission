@@ -2,33 +2,36 @@ import { createRouter, createWebHistory } from "vue-router";
 import DashboardView from "@/views/dashboard/Dashboard.vue";
 import GHGReportingView from "@/views/ghg-reporting/GHGReportingView.vue";
 import ESGDataCollectionView from "@/views/esg-data-collection/ESGDataCollectionView.vue";
-import TransportationView from "@/views/esg-data-collection/transportation/TransportationView.vue"
+import TransportationView from "@/views/esg-data-collection/transportation/TransportationView.vue";
 import MobileCombustionView from "@/views/ghg-reporting/mobile-combustion/MobileCombustionView.vue";
 import SummaryReportView from "@/views/ghg-reporting/summary-result/SummaryResultView.vue";
 import StationaryCombustionView from "@/views/ghg-reporting/stationary-combustion/StationaryCombustionView.vue";
 import AccountSetupView from "@/views/account-setup/AccountSetupView.vue";
-import CompanyInformationView from "@/views/account-setup/company-infomation/CompanyInformationView.vue"
+import CompanyInformationView from "@/views/account-setup/company-infomation/CompanyInformationView.vue";
 import HomeView from "@/views/home/HomeVue.vue";
 import LoginView from "@/views/login/LoginView.vue";
-import FacilityView from "@/views/esg-data-collection/facility/FacilityView.vue"
+import FacilityView from "@/views/esg-data-collection/facility/FacilityView.vue";
 import FacilityActivityView from "@/views/esg-data-collection/facility-activity/FacilityActivityView.vue";
 import TransportationActivityView from "@/views/esg-data-collection/transportation-activity/TransportationActivityView.vue";
 import CDPReportingViewVue from "@/views/cdp-reporting/CDPReportingView.vue";
+import DataTemplateExplorer from "@/views/data-template-explorer/DataTemplateExplorer";
+import TransportationDataTemplateExplorer from "@/views/data-template-explorer/transportation/TransportationView.vue";
+import FacilityDataTemplateExplorer from "@/views/data-template-explorer/facility/FacilityView.vue";
 
 const home = [
   {
     path: "/home",
-    name: 'home',
+    name: "home",
     component: HomeView,
   },
-]
+];
 
 const login = [
   {
     path: "/login",
     component: LoginView,
   },
-]
+];
 
 const esgDataCollection = [
   {
@@ -112,6 +115,25 @@ const accountSetup = [
   },
 ];
 
+const dataTemplateExplorer = [
+  {
+    path: "/data-template-explorer",
+    component: DataTemplateExplorer,
+    children: [
+      {
+        path: "facility",
+        name: "dataTemplateExplorer-facility",
+        component: FacilityDataTemplateExplorer,
+      },
+      {
+        path: "transportation",
+        name: "dataTemplateExplorer-transportation",
+        component: TransportationDataTemplateExplorer,
+      },
+    ],
+  },
+];
+
 const routes = [
   {
     path: "/",
@@ -124,6 +146,7 @@ const routes = [
   ...accountSetup,
   ...home,
   ...login,
+  ...dataTemplateExplorer,
 ];
 
 const router = createRouter({
