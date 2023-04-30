@@ -63,8 +63,8 @@ import ButtonVue from "@/components/Button.vue";
 import { useUserStore } from "@/store/userStore";
 
 import {
-  createCompanyInformation,
   getCompanyInformationById,
+  updateCompanyInformationById,
 } from "@/api/index.js";
 
 const companyForm = ref({
@@ -81,6 +81,7 @@ const companyForm = ref({
 });
 const handleSubmit = async (event) => {
   event.preventDefault();
+  const userStore = useUserStore();
   const {
     legalName,
     legalAddress,
@@ -92,10 +93,9 @@ const handleSubmit = async (event) => {
     contactPhoneNumber,
     companySector,
     companyService,
-  } = this.companyForm;
-  console.log(localStorage.getItem("access_token"));
-  const response = await createCompanyInformation({
-    token_str: localStorage.getItem("access_token"),
+  } = companyForm.value;
+  const response = await updateCompanyInformationById({
+    company_id: userStore.getUserInfo().company_id,
     legal_name: legalName,
     contact_name: contactName,
     legal_address: legalAddress,
@@ -111,13 +111,11 @@ const handleSubmit = async (event) => {
     this.$router.push("home");
   }
 };
-
 onMounted(async () => {
   const userStore = useUserStore();
   const { data } = await getCompanyInformationById(
     userStore.getUserInfo().company_id
   );
-  console.log(data.data);
   const company = first(data.data);
 
   Object.assign(companyForm.value, {

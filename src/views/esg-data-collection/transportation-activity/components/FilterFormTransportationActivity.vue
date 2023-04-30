@@ -6,7 +6,7 @@
         v-model:value="form.fuelSource"
         @change="handleChange"
       />
-      <SelectClient />
+      <SelectClient v-model:value="form.client" @change="handleChange" />
     </div>
   </div>
 </template>
@@ -21,7 +21,7 @@ export default defineComponent({
   },
   data() {
     return {
-      form: { fuelSource: ""},
+      form: { fuelSource: "", client: "" },
     };
   },
   methods: {

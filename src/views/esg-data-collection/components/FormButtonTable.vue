@@ -3,7 +3,7 @@
     <ButtonVue buttonText="Add new row" @click="addNewRow" />
     <ButtonVue buttonText="Import Excel" />
     <ButtonVue buttonText="Connect App" />
-    <ButtonVue buttonText="Commit Data" @click="commitData" />
+    <ButtonVue buttonText="Save" @click="commitData" />
   </div>
 </template>
 

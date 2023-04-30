@@ -13,3 +13,7 @@ export const getCompanyInformation = async () => {
 export const getCompanyInformationById = async (company_id) => {
   return await axios.get(`/api/v1/company/${company_id}`);
 };
+
+export const updateCompanyInformationById = async (payload) => {
+  return await axios.put("/api/v1/company", payload);
+}
